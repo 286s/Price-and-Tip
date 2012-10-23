@@ -15,8 +15,8 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginRight="10dp"
-            android:layout_weight="1"
-            android:gravity="right"
+            android:layout_weight="2"
+            android:gravity="center"
             android:text="@string/setting_textview_taxrate"
             android:textAppearance="?android:attr/textAppearanceMedium" />
 
@@ -24,12 +24,23 @@
             android:id="@+id/setting_edittext_taxrate"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
+            android:layout_weight="2"
             android:ems="10"
             android:gravity="center"
             android:hint="@string/setting_default_taxrate_value"
             android:inputType="numberDecimal" >
         </EditText>
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_weight="1"
+            android:ems="10"
+            android:gravity="center"
+            android:text="@string/setting_textview_percent"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
     </LinearLayout>
 
     <LinearLayout
@@ -41,8 +52,8 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginRight="10dp"
-            android:layout_weight="1"
-            android:gravity="right"
+            android:layout_weight="2"
+            android:gravity="center"
             android:text="@string/setting_textview_tiprate"
             android:textAppearance="?android:attr/textAppearanceMedium" />
 
@@ -50,12 +61,23 @@
             android:id="@+id/setting_edittext_tiprate"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
+            android:layout_weight="2"
             android:ems="10"
             android:gravity="center"
             android:hint="@string/setting_default_tiprate_value"
             android:inputType="numberSigned" >
         </EditText>
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_weight="1"
+            android:ems="10"
+            android:gravity="center"
+            android:text="@string/setting_textview_percent"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
     </LinearLayout>
 
 </LinearLayout>

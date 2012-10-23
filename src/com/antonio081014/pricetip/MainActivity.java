@@ -8,6 +8,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -91,7 +92,8 @@ public class MainActivity extends Activity {
 
 		// Set up the action bar.
 		final ActionBar actionBar = getActionBar();
-		actionBar.setDisplayShowTitleEnabled(false);
+		actionBar.setDisplayShowTitleEnabled(true);
+		actionBar.setDisplayShowHomeEnabled(true);
 
 		tv_tipTitle = (TextView) findViewById(R.id.activity_main_textview_tipTitle);
 		tv_taxTitle = (TextView) findViewById(R.id.activity_main_textview_afterTaxTotal);
@@ -139,15 +141,16 @@ public class MainActivity extends Activity {
 				0);
 		taxRate = settings.getFloat(Predefined.PREF_TAXRATE, (float) 8.75);
 		tipRate = settings.getInt(Predefined.PREF_TIPRATE, 10);
-
-		tv_tipTitle.setText(String.format("%s:\n(%d %%)", getResources()
+		// Log.i("Main", String.format("Update: %.2f, %d", taxRate, tipRate));
+		tv_tipTitle.setText(String.format("%s:(%d %%)", getResources()
 				.getString(R.string.layout_activity_main_textview_tipTitle),
 				tipRate));
 		tv_taxTitle.setText(String.format(
-				"%s:\n(%.2f %%)",
+				"%s:(%.2f %%)",
 				getResources().getString(
 						R.string.layout_activity_main_textview_aftertaxTitle),
 				taxRate));
+		updated();
 	}
 
 	@Override
@@ -168,6 +171,9 @@ public class MainActivity extends Activity {
 			return true;
 		case R.id.menu_settings:
 			startActivity(new Intent(getApplicationContext(), Setting.class));
+			return true;
+		case android.R.id.home:
+			finish();
 			return true;
 		default:
 			return super.onOptionsItemSelected(item);

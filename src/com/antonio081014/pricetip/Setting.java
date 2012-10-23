@@ -3,9 +3,13 @@
  */
 package com.antonio081014.pricetip;
 
+import android.app.ActionBar;
 import android.app.Activity;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.widget.EditText;
 
 /**
@@ -20,6 +24,10 @@ public class Setting extends Activity {
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.setting);
+
+		final ActionBar actionBar = getActionBar();
+		actionBar.setDisplayShowTitleEnabled(true);
+		actionBar.setDisplayHomeAsUpEnabled(true);
 
 		et_taxRate = (EditText) findViewById(R.id.setting_edittext_taxrate);
 		et_tipRate = (EditText) findViewById(R.id.setting_edittext_tiprate);
@@ -39,14 +47,20 @@ public class Setting extends Activity {
 						R.string.setting_default_tiprate_value)))));
 	}
 
-	protected void onStop() {
-		super.onStop();
+	@Override
+	protected void onPause() {
 		SharedPreferences settings = getSharedPreferences(Predefined.PREF_NAME,
 				0);
 		SharedPreferences.Editor editor = settings.edit();
 		editor.putInt(Predefined.PREF_TIPRATE, getTipRate());
 		editor.putFloat(Predefined.PREF_TAXRATE, (float) getTaxRate());
 		editor.commit();
+		super.onPause();
+	}
+
+	@Override
+	protected void onStop() {
+		super.onStop();
 	}
 
 	private double getTaxRate() {
@@ -66,6 +80,24 @@ public class Setting extends Activity {
 		} catch (Exception e) {
 			return Integer.parseInt(getResources().getString(
 					R.string.setting_default_tiprate_value));
+		}
+	}
+
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		getMenuInflater().inflate(R.menu.activity_setting, menu);
+		return true;
+	}
+
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		// Handle item selection
+		switch (item.getItemId()) {
+		case android.R.id.home:
+			finish();
+			return true;
+		default:
+			return super.onOptionsItemSelected(item);
 		}
 	}
 }
