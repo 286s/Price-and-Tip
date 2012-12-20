@@ -5,10 +5,10 @@ import java.util.List;
 
 import android.app.ActionBar;
 import android.app.Activity;
+import android.app.DialogFragment;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -22,7 +22,9 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
 
-public class MainActivity extends Activity {
+import com.antonio081014.pricetip.PricePicker.PricePickerDialogListener;
+
+public class MainActivity extends Activity implements PricePickerDialogListener {
 
 	private double taxRate;
 	private int tipRate;
@@ -238,6 +240,24 @@ public class MainActivity extends Activity {
 		} catch (Exception e) {
 			return 1;
 		}
+	}
+
+	public void showNoticeDialog() {
+		// Create an instance of the dialog fragment and show it
+		DialogFragment dialog = new PricePicker();
+		dialog.show(getFragmentManager(), "PricePickerDialogFragment");
+	}
+
+	@Override
+	public void onDialogPositiveClick(DialogFragment dialog) {
+		// TODO;
+
+	}
+
+	@Override
+	public void onDialogNegativeClick(DialogFragment dialog) {
+		// TODO;
+
 	}
 
 }
