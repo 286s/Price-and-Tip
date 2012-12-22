@@ -13,6 +13,7 @@ import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.View.OnLongClickListener;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
@@ -116,6 +117,14 @@ public class MainActivity extends Activity implements PricePickerDialogListener 
 					long arg3) {
 				list.remove(arg2);
 				updated();
+			}
+		});
+
+		btn_addItem.setOnLongClickListener(new OnLongClickListener() {
+			@Override
+			public boolean onLongClick(View v) {
+				showPricePickerDialog();
+				return false;
 			}
 		});
 
@@ -242,7 +251,7 @@ public class MainActivity extends Activity implements PricePickerDialogListener 
 		}
 	}
 
-	public void showNoticeDialog() {
+	public void showPricePickerDialog() {
 		// Create an instance of the dialog fragment and show it
 		DialogFragment dialog = new PricePicker();
 		dialog.show(getFragmentManager(), "PricePickerDialogFragment");
