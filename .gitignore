@@ -14,6 +14,7 @@ gen/
 
 # Local configuration file (sdk path, etc)
 local.properties
+<<<<<<< HEAD
 
 project.properties
 
@@ -22,3 +23,7 @@ project.properties
 .classpath
 
 .project
+=======
+project.properties
+proguard-project.txt
+>>>>>>> 90adf771195f7b408e7e8c5533a36c174bf90455
